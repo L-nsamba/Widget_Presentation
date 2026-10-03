@@ -34,7 +34,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     Container(
       color: Colors.yellow,
       child: Center(
-        child: Text('Shopping Cart Screen', style: TextStyle(fontSize: 25.0)),
+        child: Text('Search Screen', style: TextStyle(fontSize: 25.0)),
       ),
     ),
     Container(
@@ -56,9 +56,11 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) {
-          setState(() {
-            _selectedIndex = index; // Updating the screen selection
-          });
+          if (index != _selectedIndex) {
+            setState(() {
+              _selectedIndex = index;
+            });
+          }
         },
 
         backgroundColor: Colors.blueGrey[900], 
