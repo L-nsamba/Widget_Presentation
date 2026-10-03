@@ -14,3 +14,8 @@ A simple Flutter app demonstrating the BottomNavigation Widget
 -  **onTap:** Handles user taps and updates the selected navigation item
 
 ## Flutter Screens
+<p align="center">
+  <img src="bottom_navigation/screenshots/screen_one.png" width="250">
+  <img src="bottom_navigation/screenshots/screen_two.png" width="250">
+  <img src="bottom_navigation/screenshots/screen_three.png" width="250">
+</p>
