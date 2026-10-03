@@ -7,26 +7,56 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Widget Presentation',
-      home: const Placeholder(),
-    );
+    return const MaterialApp(home: BottomNavigationWidget());
   }
 }
 
-class BottomNavigationBar extends StatefulWidget {
-  const BottomNavigationBar({super.key});
+class BottomNavigationWidget extends StatefulWidget {
+  const BottomNavigationWidget({super.key});
 
   @override
-  State<BottomNavigationBar> createState() => _BottomNavigationBarState();
+  State<BottomNavigationWidget> createState() => _BottomNavigationWidgetState();
 }
 
-class _BottomNavigationBarState extends State<BottomNavigationBar> {
+class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
+  int _selectedIndex = 0;
+
+  // List storing the tabs for each screen
+  final List<Widget> _screens = [
+    Container(
+      color: Colors.blueAccent,
+      child: Center(child: Text('Home Screen', style: TextStyle(fontSize: 20.0),))
+      ),
+    Container(
+      color: Colors.yellow,
+      child: Center(child: Text('Shopping Cart Screen', style: TextStyle(fontSize: 25.0),))
+      ),
+    Container(
+      color: Colors.greenAccent,
+      child: Center(child: Text('Notifications Screen', style: TextStyle(fontSize: 30.0),))
+      ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: Text('Flutter Bottom Navigation Widget'), centerTitle: true,),
+      body: _screens[_selectedIndex], // Displaying the selected screen
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index; // Updating the screen selection
+          });
+        }, items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.notification_add_outlined), label: 'Notifications'),
+        ],
+        
+      ),
+    );
   }
 }
